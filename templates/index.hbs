@@ -1,0 +1,21 @@
+<!-- This is the power-up root, used to integrate with the Trello UI -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{powerup_name}}</title>
+    <!-- Import the minimum css required to give it the 'Trello' feel -->
+    <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css"/>
+    <!-- Preload frequently used scripts to make your Power-up UI quick at the expense of bandwidth -->
+    <!--<link rel="preload" href="./addon.js" as="script">-->
+</head>
+<body>
+<div style="margin: 25px; font-size: 1.2rem;">
+    <h1 style="margin-top: 25px">{{powerup_name}}</h1>
+    <p>Congratulations 🙌 You’ve just created a Trello Power-Up!</p>
+    <p>This is the root of the Power-up, Trello uses this to start your Power-up and show UI elements (like a Card button) 👀 </p>
+</div>
+<!-- Enable using the Trello API from client.js -->
+<script src="https://p.trellocdn.com/power-up.min.js"></script>
+</body>
+</html>
