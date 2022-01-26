@@ -4,9 +4,9 @@ const path = require("path");
 const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const dev = process.env.NODE_ENV !== "prod";
+const dev = process.env.NODE_ENV !== "production";
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath: string) => path.resolve(appDirectory, relativePath);
@@ -39,6 +39,11 @@ module.exports = (env: any) => {
                     },
                 },
                 {
+                    test: /\.(jpe?g|png|gif|svg)$/i,
+                    loader: "url-loader",
+                    options: { limit: 100000 },
+                },
+                {
                     test: /\.js$/,
                     use: ["source-map-loader"],
                     enforce: "pre",
@@ -46,12 +51,17 @@ module.exports = (env: any) => {
                 },
                 {
                     test: /\.css$/,
-                    use: [MiniCssExtractPlugin.loader, "css-loader"],
-                },
-                {
-                    test: /\.(jpe?g|png|gif|svg)$/i,
-                    loader: "url-loader",
-                    options: { limit: 10000 },
+                    use: [
+                        "style-loader",
+                        {
+                            loader: "css-loader",
+                            options: {
+                                url: {
+                                    filter: (url: string) => !url.startsWith("data:"),
+                                },
+                            },
+                        },
+                    ],
                 },
             ],
         },
@@ -59,12 +69,12 @@ module.exports = (env: any) => {
         plugins: [
             new webpack.EnvironmentPlugin(["NODE_ENV", "POWERUP_NAME", "POWERUP_APP_KEY", "CONTEXT_PATH"]),
             new CopyWebpackPlugin({ patterns: [{ from: "static", to: "static" }] }),
-            new MiniCssExtractPlugin(),
+            // new MiniCssExtractPlugin(),
             new HtmlWebpackPlugin({
                 chunks: ["capabilities"],
                 template: "templates/index.hbs",
                 filename: "index.html",
-                templateParamters: { powerup_name: process.env.POWERUP_NAME },
+                templateParameters: { powerup_name: process.env.POWERUP_NAME },
             }),
             new HtmlWebpackPlugin({
                 chunks: ["addon"],
