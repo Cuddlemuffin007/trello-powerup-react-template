@@ -4,10 +4,11 @@ import { Segment } from "semantic-ui-react";
 
 import { PowerUpRoutes } from "./components/PowerUpRoutes";
 import { TrelloProvider } from "./components/TrelloProvider";
-
-const t = window.TrelloPowerUp.iframe();
+import { useTrelloApi } from "./hooks";
 
 export const PowerUpRouter = (): JSX.Element => {
+    const t = useTrelloApi();
+
     return (
         <TrelloProvider t={t}>
             <Suspense fallback={<Segment loading></Segment>}>

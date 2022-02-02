@@ -5,6 +5,7 @@
  */
 declare global {
     export interface Window {
+        Trello: Trello.RestApiClient;
         TrelloPowerUp: Trello.PowerUp;
         locale: string;
     }
@@ -386,6 +387,8 @@ export namespace Trello {
         }
 
         export interface IFrameOptions extends LocalizerOptions {
+            appKey?: string;
+            appName?: string;
             context?: string;
             secret?: string;
             helpfulStacks?: boolean;
@@ -402,7 +405,11 @@ export namespace Trello {
             request(command: string, options: any): PromiseLike<any>;
             render(fxRender: () => void): any;
             initApi(): void;
-            getRestApi(): unknown;
+            getRestApi(): {
+                authorize(opts: any): PromiseLike<void>;
+                clearToken(): PromiseLike<void>;
+                getToken(): PromiseLike<string | null | undefined>;
+            };
             initSentry(): void;
             NotHandled: any;
         }
@@ -672,5 +679,10 @@ export namespace Trello {
             };
             version: string;
         }
+    }
+
+    export interface RestApiClient {
+        setToken(token: string | null | undefined): void;
+        get(...args: any): PromiseLike<unknown>;
     }
 }

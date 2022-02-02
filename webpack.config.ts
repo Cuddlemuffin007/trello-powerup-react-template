@@ -67,7 +67,13 @@ module.exports = (env: any) => {
         },
         devtool: !env.WEBPACK_BUILD ? "source-map" : undefined,
         plugins: [
-            new webpack.EnvironmentPlugin(["NODE_ENV", "POWERUP_NAME", "POWERUP_APP_KEY", "CONTEXT_PATH"]),
+            new webpack.EnvironmentPlugin([
+                "CONTEXT_PATH",
+                "NODE_ENV",
+                "POWERUP_NAME",
+                "POWERUP_APP_KEY",
+                "TRELLO_TOKEN_EXPIRATION",
+            ]),
             new CopyWebpackPlugin({ patterns: [{ from: "static", to: "static" }] }),
             // new MiniCssExtractPlugin(),
             new HtmlWebpackPlugin({
@@ -80,6 +86,15 @@ module.exports = (env: any) => {
                 chunks: ["addon"],
                 template: "templates/react.hbs",
                 filename: "card-button.html",
+                templateParameters: {
+                    powerup_name: process.env.POWERUP_NAME,
+                    powerup_app_key: process.env.POWERUP_APP_KEY,
+                },
+            }),
+            new HtmlWebpackPlugin({
+                chunks: ["addon"],
+                template: "templates/react.hbs",
+                filename: "auth.html",
                 templateParameters: {
                     powerup_name: process.env.POWERUP_NAME,
                     powerup_app_key: process.env.POWERUP_APP_KEY,

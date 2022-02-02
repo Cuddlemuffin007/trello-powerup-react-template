@@ -1,0 +1,5 @@
+#react-root .ui.container.center.aligned,
+#react-root .ui.segment.center.aligned {
+  max-width: 280px!important;
+  margin: 0!important;
+}
