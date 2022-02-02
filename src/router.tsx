@@ -12,7 +12,7 @@ export const PowerUpRouter = (): JSX.Element => {
     return (
         <TrelloProvider t={t}>
             <Suspense fallback={<Segment loading></Segment>}>
-                <Router basename={process.env.CONTEXT_PATH || undefined}>
+                <Router basename={process.env.CONTEXT_PATH}>
                     <PowerUpRoutes />
                 </Router>
             </Suspense>

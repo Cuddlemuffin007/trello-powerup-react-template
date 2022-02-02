@@ -9,6 +9,13 @@ const CAPABILITY_PROPS: CapabilityProps = {
     },
 };
 
-window.TrelloPowerUp.initialize({
-    "card-buttons": (t: Trello.PowerUp.IFrame) => getCardButtons(t, CAPABILITY_PROPS),
-});
+export const connector = (): void => {
+    window.TrelloPowerUp.initialize({
+        "card-buttons": (t: Trello.PowerUp.IFrame) => getCardButtons(t, CAPABILITY_PROPS),
+    });
+};
+
+/* istanbul ignore if */
+if (typeof module !== undefined && !module.parent) {
+    connector();
+}

@@ -1,7 +1,7 @@
 {
-  "name": "update-candidate-status-powerup",
+  "name": "trello-powerup-react-template",
   "version": "0.0.1",
-  "description": "Trello Power-Up for updating a candidate's pipeline status",
+  "description": "A template for creating Trello PowerUps with React and Typescript",
   "private": true,
   "dependencies": {
     "core-js": "^3.20.3",
@@ -18,7 +18,9 @@
     "build:dev:watch": "yarn run build:dev --watch",
     "clean": "rimraf dist && rimraf node_modules",
     "lint": "eslint src/**/*.{js,ts,tsx}",
-    "lint:fix": "yarn run lint --quiet --fix"
+    "lint:fix": "yarn run lint --quiet --fix",
+    "test": "env-cmd -f .env.test jest",
+    "test:watch": "yarn run test --watchAll"
   },
   "eslintConfig": {
     "extends": [
@@ -58,7 +60,12 @@
     ],
     "coverageDirectory": "coverage",
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "<rootDir>/src/@types/",
+      "<rootDir>/src/react-app-env.d.ts",
+      "<rootDir>/src/hooks/index.ts",
+      "<rootDir>/src/addon.tsx",
+      "<rootDir>/src/config.ts"
     ],
     "coverageThreshold": {
       "global": {
@@ -83,6 +90,7 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
+    "testEnvironment": "jsdom",
     "testMatch": [
       "**/*.test.{ts,tsx}"
     ]
@@ -97,6 +105,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.4",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
+    "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^12.1.10",
     "@types/enzyme": "^3.10.9",
     "@types/jest": "^26.0.15",
@@ -122,6 +131,7 @@
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.4.7",
     "mini-css-extract-plugin": "^2.5.2",
     "prettier": "^2.3.2",
     "react-refresh": "^0.11.0",

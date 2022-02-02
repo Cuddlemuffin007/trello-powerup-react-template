@@ -9,7 +9,7 @@ export const Auth = (): JSX.Element => {
 
     const handleAuthorize = async () => {
         const {
-            trello: { tokenExpiration = "1hour" },
+            trello: { tokenExpiration },
         } = config;
         await t.getRestApi().authorize({ scope: "read,write", expiration: tokenExpiration });
     };

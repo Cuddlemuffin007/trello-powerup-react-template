@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Auth component should render the Auth component 1`] = `
+<Segment
+  textAlign="center"
+>
+  <Message
+    content="Authorize your Trello account to continue."
+    info={true}
+  />
+  <Button
+    as="button"
+    color="blue"
+    content="Authorize"
+    onClick={[Function]}
+  />
+</Segment>
+`;

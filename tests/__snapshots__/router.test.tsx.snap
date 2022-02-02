@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`application router should create a trello powerup iframe and render without crashing 1`] = `
+<PowerUpRouter>
+  <TrelloProvider>
+    <Suspense
+      fallback={
+        <Segment
+          loading={true}
+        />
+      }
+    >
+      <BrowserRouter
+        basename="/"
+      >
+        <Router
+          basename="/"
+          location={
+            Object {
+              "hash": "",
+              "key": "default",
+              "pathname": "/",
+              "search": "",
+              "state": null,
+            }
+          }
+          navigationType="POP"
+          navigator={
+            Object {
+              "action": "POP",
+              "back": [Function],
+              "block": [Function],
+              "createHref": [Function],
+              "forward": [Function],
+              "go": [Function],
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "key": "default",
+                "pathname": "/",
+                "search": "",
+                "state": null,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+        >
+          <PowerUpRoutes>
+            <Routes>
+              <Message
+                compact={true}
+                content="Nothing to see here!"
+                info={true}
+              >
+                <div
+                  className="ui compact info message"
+                >
+                  <MessageContent>
+                    <div
+                      className="content"
+                    >
+                      <p>
+                        Nothing to see here!
+                      </p>
+                    </div>
+                  </MessageContent>
+                </div>
+              </Message>
+            </Routes>
+          </PowerUpRoutes>
+        </Router>
+      </BrowserRouter>
+    </Suspense>
+  </TrelloProvider>
+</PowerUpRouter>
+`;

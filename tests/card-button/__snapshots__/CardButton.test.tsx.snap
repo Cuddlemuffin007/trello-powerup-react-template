@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardButton component should render the CardButton component 1`] = `
+<div>
+  <p>
+    Card Button IFrame content
+  </p>
+</div>
+`;
