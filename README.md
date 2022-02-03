@@ -23,10 +23,12 @@ Installs both the run-time project dependencies and developer tools listed in [p
 Builds the app from production to the build folder (dist).
 Make sure the following environment variables are set:
 
-CONTEXT_PATH: this will be used as the basename for the React BrowserRouter component; a good default is "/" or if you're using Git(Hub|Lab) pages, use your project name.
-POWERUP_APP_KEY: your Trello App Key. You can find this [here](https://trello.com/app-key).
-POWERUP_NAME: your PowerUp name. This and POWERUP_APP_KEY are required when initializing the Trello PowerUp iframe where your app will be mounted.
-TRELLO_TOKEN_EXPIRATION: If you're using Trello's REST API client and having user's authorize their account, this is the expiration period for the token.
+| | |
+------ | -----
+CONTEXT_PATH | used as the basename for the React BrowserRouter component; a good default is "/" or if you're using GitHub or GitLab pages, use your project name.
+POWERUP_APP_KEY | your Trello App Key. You can find this [here](https://trello.com/app-key).
+POWERUP_NAME | your PowerUp name. This and POWERUP_APP_KEY are required when initializing the Trello PowerUp iframe where your app will be mounted.
+TRELLO_TOKEN_EXPIRATION | If you're using Trello's REST API client and having user's authorize their account, this is the expiration period for the token.
 
 #### 4. Deployment
 You may deploy this build package from the hosting provider of your choice and view it in Trello. (Quickest is probably deploying to GitHub pages)
